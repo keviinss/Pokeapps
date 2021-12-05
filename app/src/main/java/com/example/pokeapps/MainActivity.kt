@@ -26,16 +26,17 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar!!.setDisplayShowHomeEnabled(true)
 
                     //Recplace Fragment
-                    val detailFragment:PokemonDetail = PokemonDetail.getInstance()
-                    val position:Int = intent.getIntExtra("position", -1)
+                    val detailFragment = PokemonDetail.getInstance()
+                    val position = intent.getIntExtra("position", -1)
                     val bundle = Bundle()
-                    bundle.putInt("position", position)
+                    bundle.putInt("position",position)
                     detailFragment.arguments = bundle
 
                     //val fragmentTransaction:FragmentTransaction = supportFragmentManager.beginTransaction()
                     val fragmentTransaction = supportFragmentManager.beginTransaction()
                     fragmentTransaction.replace(R.id.list_pokemon_fragment,detailFragment)
                     fragmentTransaction.addToBackStack("detail")
+                    fragmentTransaction.commit()
 
                     //Set Pokemon for Toolbar
                     val pokemon = Common.pokemonList[position]
